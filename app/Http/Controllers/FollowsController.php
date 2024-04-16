@@ -6,8 +6,9 @@ use Illuminate\Http\Request;
 
 class FollowsController extends Controller
 {
-    //
-    public function followList(){
+    //フォローしている
+    public function followList(User $user){
+        
         return view('follows.followList');
     }
     public function followerList(){
