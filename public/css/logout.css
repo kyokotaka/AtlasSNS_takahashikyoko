@@ -3,8 +3,50 @@
 html{
     height: 100%;
 }
-
+/* login画面共通部分 */
 body{
     height: 100%;
-    background: #186AC9;
+    background: rgb(255,233,39);
+    background: linear-gradient(0deg, rgba(255,233,39,1) 0%, rgba(174,208,157,1) 26%, rgba(0,120,255,1) 100%);
 }
+
+header{
+    text-align: center
+    
+}
+
+.top-image{
+    width: 10%;
+    height: 10%;
+    padding:10rem 0 0 0;
+}
+
+.top-title{
+    color: #ffff;
+    font-weight: bold;
+    padding:0 0 5rem 0
+}
+
+.heading{
+    color: #ffff;
+
+}
+
+section{
+    background-color:#999999;
+    text-align: center;
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+    width: 30em
+   }
+.text_area{
+    justify-content: center;
+    flex-wrap: wrap;
+}
+  /* div{
+    width:100px;
+    height:100px;
+    margin:0 auto;
+  } */
