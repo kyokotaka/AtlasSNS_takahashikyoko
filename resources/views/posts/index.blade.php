@@ -10,27 +10,44 @@
     <div class="form">
       {{ Form::input('text', 'new_post', null, ['required', 'class' => 'form-control', 'placeholder' => '投稿内容を入力してください']) }}
     </div>
-    <button type="submit" class="post_btn ">投稿</button>
+    <button type="submit" class="post_btn "><img src="/images/post.png"></button>
       {!! Form::close() !!}   
   </div>
 
-      
-    </form>
-   
-  </div>
-  <table class="post table">
+    <ul>
       @foreach ($posts as $post)
-          <tr>
-           <td>{{$post->user_id}}</td>
-           <td>{{$post->post}}</td>
-           <td><a class="btn edit" href="/post/{{$post->id}}/top">編集</a></td>
-           <td><a class="btn delete" href="/post/{{$post->id}}/top"onclick="return confirm('この投稿を削除します。よろしいですか？')">削除</a></td>
-          </tr>
+      <li class="post_list">
+        <div class="post_date">
+          <img src="{{ asset('images/' . $post->user->images) }}" alt="icon_images" class=post_image>
+          <p class="username">{{$post->user->username}}</p>
+          <p class="update">{{$post->updated_at}}</p>
+        </div>
+        <div class="post">{!! nl2br(htmlspecialchars($post->post)) !!}</div>
+        <div class="post_detail">
+         @if (Auth::user()->id == $post->user_id)
+          <a class="edit" href="" post="{{$post->post}}"post_id="{{ $post->id }}"><img src="images/edit.png" alt="編集"></a>
+          @csrf
+          <a class="delete" href="/post/{{$post->id}}/top"onclick="return confirm('この投稿を削除します。よろしいですか？')"><img src="images/trash.png" alt="削除"></a>
+          @csrf
+         @endif
+        </div>
+      </li>
       @endforeach
-</table>
+    </ul>
 
-</div>
-    
-
+    <div class="model_js-model">
+      <div class="modal__bg js-modal-close"></div>
+        <div class="modal__content">
+          <form action="/top" method="post">
+            <input name="" class="modal_post"></input>
+              <input type="hidden" name="" class="modal_id" value="">
+              <input type="submit" value="更新">
+              {{ csrf_field() }}
+          </form>
+          <a class="js-modal-close" href="/top">閉じる</a>
+        </div>
+    </div>
 
 @endsection
+
+
