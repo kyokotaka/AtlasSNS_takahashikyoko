@@ -44,7 +44,7 @@ Route::get('/top','PostsController@index')->name('post_view');
 //投稿を送る為
 Route::post('/top','PostsController@create')->name('new_post');
 //投稿を編集する
-Route::get('/post/{id}/top','PostsController@edit');
+Route::post('/post/{id}/top','PostsController@edit');
 //投稿を削除する
 Route::get('/post/{id}/top','PostsController@delete');
 
@@ -70,7 +70,7 @@ Route::get('/followList','FollowsController@followList');
 Route::get('/followerList','FollowsController@followerList');
 
 //アイコンに入っているidを送りユーザープロフィールにいく
-Route::get('/{id}/userprofile','UsersController@userprofile');
+Route::get('/{id}/userprofile','UsersController@userprofile')->name('user_profile');
 });
 
 //Route::get('/top','UsersController@count');

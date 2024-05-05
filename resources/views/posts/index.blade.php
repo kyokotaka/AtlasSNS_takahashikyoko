@@ -36,16 +36,17 @@
     </ul>
 
     <div class="model_js-model">
-      <div class="modal__bg js-modal-close"></div>
+      <div class="modal__bg js-modal-close">
         <div class="modal__content">
           <form action="/top" method="post">
-            <input name="" class="modal_post"></input>
+            <input name="" class="modal_post">
               <input type="hidden" name="" class="modal_id" value="">
               <input type="submit" value="更新">
               {{ csrf_field() }}
           </form>
           <a class="js-modal-close" href="/top">閉じる</a>
         </div>
+      </div>
     </div>
 
 @endsection
