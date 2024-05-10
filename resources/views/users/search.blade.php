@@ -7,25 +7,34 @@
   @csrf
   <div id="search">
     <input type="text" name="keyword"  placeholder="ユーザー名">
-        <button type="submit" input type="image" src=""></button>
+      <button type="submit"  class="search_btn"><img src="/images/search.png" ></button>
         <!-- //$search_wordは変数にしてあるため、{}で囲むことでechoと同じ意味になり、表示できる -->
-        {{$search_word}}
+      <h3>{{$search_word}}</h3>
   </div>
 </form>
   <!-- //繰り返し処理 -->
-  @foreach($users as $user)
-  <!-- {$user} -->
-    <tr>
-      <!-- <td>{$user->icon}</td> -->
-      <td>{{$user->username}}</td>
-      <td></td>
+  <div class="search_user">
+    @foreach($users as $user)
+    <div class="user_detail">
+      <img src="{{asset('images/'.$user->images)}}">
+      <p class=search_username>{{$user->username}}</p>
       <!-- //postで送り、URLはweb.phpのルートfollow.idを通りデータベースに登録する。この時idは$idを通りデータベースに登録する。この時idは$userの中にあるidを持ってくる。 -->
-      <form method="POST" action="{{route('follow',['id' => $user->id ]) }}">
-      @csrf
-      <button type="submit" class="btn  follow">フォロー</button></form>
-    </tr>  
-    
-  @endforeach
-
+      <!-- 現在ログインしているユーザが$userの中に入っているid(つまりクリックした人のid)がなかったらisFollowingメソッドを通りフォローするボタンになる -->
+        @if(!auth()->user()->isFollowing($user->id))
+          <form method="POST" action="{{route('follow',['id' => $user->id ]) }}">
+           @csrf
+           <button type="submit" class="btn btn-primary btn-sm" value="Submit">フォローする</button>
+           <!-- <button type="submit" class="btn follow">フォロー</button> -->
+          </form>
+        @else
+          <form method="POST" action="{{route('un_follow',['id' => $user->id ]) }}">
+           @csrf
+           <button type="submit" class="btn btn-danger btn-sm" value="submit">フォロー解除</button>
+           <!-- <button type="submit" class="btn un_follow">フォロー解除</button> -->
+          </form>
+        @endif
+    </div>
+    @endforeach
+  </div>  
 
 @endsection

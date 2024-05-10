@@ -52,7 +52,9 @@ class LoginController extends Controller
         return view("auth.login");
     }
     public function logout(Request $request){
+        //Authからログアウトしますよというメソッドを使いログアウト
         Auth::logout();
+        //$requestの中には現在ログインしているユーザーの情報が入っている。これらのセッション（データの塊）をインバリデート（無効）にしている。
         $request->session()->invalidate();
         return redirect("/login");
 }}
