@@ -33,7 +33,10 @@ class UsersController extends Controller
       ]);
 
       $user = Auth::user();
+      $image=Auth::user()->images;
+      if ($request->hasFile('images')){
       $image = $request->file('images')->store('public/images');
+      }
       //dd(basename($image));
       $validator ->validate();
       $user->update([

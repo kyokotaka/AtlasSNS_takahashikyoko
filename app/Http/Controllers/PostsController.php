@@ -13,7 +13,13 @@ class PostsController extends Controller
 
     public function index(Request $request){
         //リード（読み込み）
-        $view_posts = Post::all();
+        $auth_id = Auth::user()->id;
+        $follow_id =Auth::user()->follows()->pluck('followed_id')->toArray();
+        $view_posts = Post::
+        whereIn('user_id' ,array_merge($follow_id,[$auth_id]))->
+        orderBy('created_at', 'desc')->get();
+      
+        
          //dd($view_posts);
           // if($request->isMethod('post')){
           //   $post = $request->input('posts');
@@ -31,6 +37,7 @@ class PostsController extends Controller
     public function create(Request $request){
       $request->validate([
         'new_post' => 'required|string|max:150',]);
+        
         $post = $request->input('new_post');
         //$postには＄requestの中のnew_postが入りますよ〜
         $user_id =Auth::user()->id;
@@ -45,6 +52,8 @@ class PostsController extends Controller
 ///パラメータ付ルーティングによる編集機能（アップデート）
     public function edit(Request $request){
       //dd($request);
+      $request->validate([
+        'Edit_post' =>'required|string|max:150',]);
       $id=$request->input('id');
       $edit_post=$request->input('Edit_post');
 

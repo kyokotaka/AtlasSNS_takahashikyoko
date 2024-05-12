@@ -1,10 +1,12 @@
 <?php $__env->startSection('content'); ?>
 <!-- フォローしている人のアイコンリスト -->
-<div class=icon_list>
-  <p>フォローリスト</p>
+<div class="icon_List">
+<p class="ff_list">フォローリスト</p>
+  <div class=icon_list>
    <?php $__currentLoopData = $follow_users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $follow_user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
     <a href="<?php echo e(route('user_profile',['id' => $follow_user->id ])); ?>"><img src="<?php echo e(asset('storage/images/' . $follow_user->images)); ?>" alt="a" class=post_image></a>
    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+  </div>
 </div>
 <ul>
   <?php $__currentLoopData = $follow_posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $follow_post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -14,7 +16,7 @@
       <p class="username"><?php echo e($follow_post->user->username); ?></p>
       <p class="update"><?php echo e($follow_post->updated_at); ?></p>
     </div>
-    <div class="post"><?php echo e($follow_post->post); ?></div>
+    <div class="post"><?php echo nl2br(htmlspecialchars($follow_post->post)); ?></div>
   </li>
   <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 </ul>

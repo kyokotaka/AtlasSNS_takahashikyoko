@@ -1,8 +1,20 @@
 
 @extends('layouts.login')
 
+
 @section('content')
     <!-- Laravel独自のフォームの書きかた -->
+    @if($errors->any())
+    <div class="alert alert-danger">
+      <ul>
+        @foreach($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+      </ul>
+    </div>
+    @endif
+
+
     {!! Form::open(['url' =>'/top','class'=>'index_container']) !!}
 
     @csrf
@@ -10,6 +22,8 @@
     {{ Form::textarea('new_post', null, ['required', 'class' => 'form-control', 'placeholder' => '投稿内容を入力してください']) }}
 
     <button type="submit" class="post_btn "><img src="/images/post.png"></button>
+
+    
       {!! Form::close() !!}   
 
 
@@ -40,7 +54,7 @@
           <form action="/post/{{$post->id}}/top" method="post">
           <textarea name="Edit_post" class="modal_post" value=""></textarea>
               <input type="hidden" name="id" class="modal_id" value="">
-              <a type="submit" ><img src="images/edit.png" alt="編集"></a>
+              <button type="submit" class="post_edit"><img src="images/edit.png" alt="編集"></button>
               {{ csrf_field() }}
           </form>
         </div>

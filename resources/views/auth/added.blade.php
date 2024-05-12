@@ -4,10 +4,10 @@
 
 <div id="clear">
   <p class="heading">{{$username}}さん</p>
-  <div class="text_area">
+  <div class="form_add">
     <p>ようこそ！AtlasSNSへ！</p>
-    <p>ユーザー登録が完了しました。</p>
-    <p>早速ログインをしてみましょう。</p>
+    <p class=add_ok>ユーザー登録が完了しました。</p>
+    <p class>早速ログインをしてみましょう。</p>
   </div>
   <div class="text-center">
     <!-- <input class="btn btn-danger btn-sm" type="submit" value="ログイン画面へ"> -->

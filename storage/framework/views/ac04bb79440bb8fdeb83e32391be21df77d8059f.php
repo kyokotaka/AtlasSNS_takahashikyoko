@@ -1,5 +1,16 @@
 <?php $__env->startSection('content'); ?>
     <!-- Laravel独自のフォームの書きかた -->
+    <?php if($errors->any()): ?>
+    <div class="alert alert-danger">
+      <ul>
+        <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+        <li><?php echo e($error); ?></li>
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+      </ul>
+    </div>
+    <?php endif; ?>
+
+
     <?php echo Form::open(['url' =>'/top','class'=>'index_container']); ?>
 
 
@@ -9,6 +20,8 @@
 
 
     <button type="submit" class="post_btn "><img src="/images/post.png"></button>
+
+    
       <?php echo Form::close(); ?>   
 
 
@@ -39,7 +52,7 @@
           <form action="/post/<?php echo e($post->id); ?>/top" method="post">
           <textarea name="Edit_post" class="modal_post" value=""></textarea>
               <input type="hidden" name="id" class="modal_id" value="">
-              <a type="submit" ><img src="images/edit.png" alt="編集"></a>
+              <button type="submit" class="post_edit"><img src="images/edit.png" alt="編集"></button>
               <?php echo e(csrf_field()); ?>
 
           </form>

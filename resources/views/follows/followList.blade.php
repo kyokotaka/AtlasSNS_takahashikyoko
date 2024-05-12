@@ -2,11 +2,13 @@
 
 @section('content')
 <!-- フォローしている人のアイコンリスト -->
-<div class=icon_list>
-  <p>フォローリスト</p>
+<div class="icon_List">
+<p class="ff_list">フォローリスト</p>
+  <div class=icon_list>
    @foreach($follow_users as $follow_user)
     <a href="{{route('user_profile',['id' => $follow_user->id ]) }}"><img src="{{ asset('storage/images/' . $follow_user->images) }}" alt="a" class=post_image></a>
    @endforeach
+  </div>
 </div>
 <ul>
   @foreach($follow_posts as $follow_post)
@@ -16,7 +18,7 @@
       <p class="username">{{ $follow_post->user->username}}</p>
       <p class="update">{{ $follow_post->updated_at}}</p>
     </div>
-    <div class="post">{{ $follow_post->post}}</div>
+    <div class="post">{!! nl2br(htmlspecialchars($follow_post->post)) !!}</div>
   </li>
   @endforeach
 </ul>
