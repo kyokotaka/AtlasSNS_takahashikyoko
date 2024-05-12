@@ -15,7 +15,7 @@
      <p class="heading">新規ユーザー登録</p>
       <div class="text_area">
         {{ Form::label('ユーザー名') }}
-        {{ Form::text('username',null,['required','min:2','max,12','class' => 'input']) }}
+        {{ Form::text('username',null,['class' => 'input']) }}
         {{ Form::label('メールアドレス') }}
         {{ Form::text('mail',null,['class' => 'input']) }}
         {{ Form::label('パスワード') }}

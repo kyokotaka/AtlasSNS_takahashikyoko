@@ -26,10 +26,11 @@ class UsersController extends Controller
       $validator = Validator::make($request->all(),[
         'username' => ['required','min:2','max:12'],
         //'unique:users,mail,'.Auth::user()->mail.',mail'はusersテーブルのメールカラムの中から自分のメールアドレスだけは除くための記述。
-        'mail' =>['required','min:5','max:40','email','unique:users,mail,'.Auth::user()->mail.',mail'],
-        'password' =>['required','min:8','max:20','alpha-num',],
-        'password_confirmation' =>['required','min:8','max:20','alpha-num',],
-        'bio' =>['max:150',]
+        'mail' =>['required','min:5','max:40','email','unique:users,mail,'.Auth::user()->mail.',mail',],
+        'password' =>['required','min:8','max:20','alpha_num','confirmed',],
+        'password_confirmation' =>['required','min:8','max:20','alpha_num',],
+        'bio' =>['max:150',],
+        'images'=>['file','mimes:jpg,png,bmp,gif,svg'],
       ]);
 
       $user = Auth::user();

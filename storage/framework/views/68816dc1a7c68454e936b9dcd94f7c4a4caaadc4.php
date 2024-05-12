@@ -1,6 +1,14 @@
 <?php $__env->startSection('content'); ?>
 
-
+<?php if($errors->any()): ?>
+    <div class="alert alert-danger">
+      <ul>
+        <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+        <li><?php echo e($error); ?></li>
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+      </ul>
+    </div>
+<?php endif; ?>
 
 <form action="/update"  method="post" enctype="multipart/form-data">
   <?php echo csrf_field(); ?>
@@ -20,10 +28,10 @@
     <input type="email" name="mail" minlength="5"maxlength="40" value="<?php echo e(auth()->user()->mail); ?>"></li>
     <li class="new_pass">
     <label>パスワード</label>
-    <input type="password" name="password" minlength="8"maxlength="20" ></li>
+    <input type="password" name="password"  ></li>
     <li class="new_pass_con">
     <label>パスワード確認</label>
-    <input type="password" name="password_confirmation"minlength="8"maxlength="20" ></li>
+    <input type="password" name="password_confirmation" ></li>
     <li class="new_bio">
     <label>自己紹介</label>
     <input type="text" name="bio" value="<?php echo e(auth()->user()->bio); ?>"></dd>

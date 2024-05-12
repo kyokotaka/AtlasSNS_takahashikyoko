@@ -19,7 +19,7 @@
 
     @csrf
     <img src="{{ asset('/storage/images/' . Auth::user()->images) }}" alt="aa" class="post_user_image">
-    {{ Form::textarea('new_post', null, ['required', 'class' => 'form-control', 'placeholder' => '投稿内容を入力してください']) }}
+    {{ Form::textarea('new_post', null, [ 'class' => 'form-control', 'placeholder' => '投稿内容を入力してください']) }}
 
     <button type="submit" class="post_btn "><img src="/images/post.png"></button>
 

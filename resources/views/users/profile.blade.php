@@ -30,10 +30,10 @@
     <input type="email" name="mail" minlength="5"maxlength="40" value="{{auth()->user()->mail}}"></li>
     <li class="new_pass">
     <label>パスワード</label>
-    <input type="password" name="password" minlength="8"maxlength="20" ></li>
+    <input type="password" name="password"  ></li>
     <li class="new_pass_con">
     <label>パスワード確認</label>
-    <input type="password" name="password_confirmation"minlength="8"maxlength="20" ></li>
+    <input type="password" name="password_confirmation" ></li>
     <li class="new_bio">
     <label>自己紹介</label>
     <input type="text" name="bio" value="{{auth()->user()->bio}}"></dd>

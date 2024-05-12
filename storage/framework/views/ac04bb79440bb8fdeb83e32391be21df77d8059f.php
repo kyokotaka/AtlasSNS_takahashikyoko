@@ -16,7 +16,7 @@
 
     <?php echo csrf_field(); ?>
     <img src="<?php echo e(asset('/storage/images/' . Auth::user()->images)); ?>" alt="aa" class="post_user_image">
-    <?php echo e(Form::textarea('new_post', null, ['required', 'class' => 'form-control', 'placeholder' => '投稿内容を入力してください'])); ?>
+    <?php echo e(Form::textarea('new_post', null, [ 'class' => 'form-control', 'placeholder' => '投稿内容を入力してください'])); ?>
 
 
     <button type="submit" class="post_btn "><img src="/images/post.png"></button>

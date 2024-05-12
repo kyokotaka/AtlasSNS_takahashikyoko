@@ -83,7 +83,7 @@ header{
   top: 95px;
   width: 20%;
   text-align: right;
-  background-color: #186AC9;
+  background-color: #fff;
   opacity: 0;
   transition: .3s ease-in-out;
   pointer-events: none;
@@ -104,8 +104,15 @@ header{
       align-items: center;
       justify-content: center;
       color: #fff;
+    /* li:hover{
+        background-color: #186AC9; */
+      }
+      li:hover{
+        background-color: #186AC9;
     }
-    a{color: #fff;}
+    a:hover{
+      color: #fff;
+    }
   }
 }
  

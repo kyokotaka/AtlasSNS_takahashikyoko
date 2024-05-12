@@ -16,7 +16,7 @@
       <div class="text_area">
         <?php echo e(Form::label('ユーザー名')); ?>
 
-        <?php echo e(Form::text('username',null,['required','min:2','max,12','class' => 'input'])); ?>
+        <?php echo e(Form::text('username',null,['class' => 'input'])); ?>
 
         <?php echo e(Form::label('メールアドレス')); ?>
 
